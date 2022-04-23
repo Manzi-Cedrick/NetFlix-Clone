@@ -1,0 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: #111;
+  color: white;
+}
+::-webkit-scrollbar{
+  width: 5px;
+  border-radius:12px;
+  background-color: aliceblue;
+}
+::-webkit-scrollbar-thumb{
+  background-color: hotpink;
+}

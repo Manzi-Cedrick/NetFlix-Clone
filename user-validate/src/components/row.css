@@ -1,0 +1,34 @@
+.row{
+    margin-left:20px;
+}
+.row_title{
+    padding:20px;
+    font-size: 1.2em;
+}
+.row_posts{
+    display: flex;
+    padding: 20px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+.row_poster{
+    max-width: 1000px;
+    max-height:250px;
+   
+    transition: transform 500ms;
+    margin-right: 15px;
+}
+.row_posts::-webkit-scrollbar{
+    background-color: aqua;
+    display: none;
+}
+.row_poster:hover{
+    transform: scale(1.18);
+}
+.row_poster_large{
+    max-height:250px;
+    margin-right: 50px;
+}
+.row_poster_large{
+    transform: scale(1.21)
+}
