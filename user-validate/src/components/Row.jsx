@@ -36,6 +36,10 @@ function Row(props) {
         .catch(error=>console.log(error))
     }
   }
+  const handleSearch = ()=>{
+  const filteredmovies = movies.filter((movie) =>movie.name.includes(props.searchword) || movie.original_name.includes(props.searchword)|| movie.title.includes(props.searchword))
+  setMovies(filteredmovies)
+  }
   return (
     <div className="row">
       <h2 className="row_title">{props.title}</h2>

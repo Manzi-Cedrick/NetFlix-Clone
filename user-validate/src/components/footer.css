@@ -1,0 +1,35 @@
+.sticky-footer{
+    position: sticky;
+    bottom:0;
+    left:0;
+}
+.footer{
+    position: absolute;
+    bottom:0;
+    left:0;
+    height: 10vh;
+    width: 100%;
+    background: black;
+}
+.footer-flex{
+    display: flex;
+    font-size:1.4em;
+    justify-content: space-evenly;
+    padding-top:  -1.5em;
+}
+.footer-flex a{
+    color: royalblue;
+}
+.btn{
+    background-color: red;
+    height:5vh;
+    border: none;
+    outline: none;
+    margin-top: 2em;
+    width:10vw;
+    color: white;
+    cursor: pointer;
+}
+.removecookie{
+    display: none;
+}

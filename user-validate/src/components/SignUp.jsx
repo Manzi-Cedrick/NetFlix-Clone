@@ -1,4 +1,4 @@
-import React,{ useState} from 'react'
+import React,{ useState , useEffect} from 'react'
 import {FaEye} from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import Home from "../HomePage";
@@ -10,6 +10,18 @@ function SignUp() {
     const [validate, setValidate] = useState(false);
     const [showpass, setShowPass] = useState(false);
     const [newusername,setnewusername] = useState("");
+    useEffect(() => {
+      if (
+        newusername.trim().length ==0 ||
+        newPass.trim().length == 0 ||
+        (newuserEmail.trim().length == 0 &&
+          newuserEmail.trim() != newuserEmail.includes(`${"@" || "gmail.com"}`))
+      ) {
+        setValidate(true);
+      } else {
+        setValidate(false);
+      }
+    },[newusername,newPass,newuserEmail])
     const getnewuserEmail = (event) => {
         setnewuserEmail(event.target.value);
       };
@@ -21,18 +33,11 @@ function SignUp() {
       }
       const handleForm = (event) => {
         event.preventDefault();
-        if (
-          newPass.trim().length == 0 ||
-          (newuserEmail.trim().length == 0 &&
-            newuserEmail.trim() != newuserEmail.includes(`${"@" || "gmail.com"}`))
-        ) {
-          setValidate(true);
-        } else {
-          setValidate(false);
+        
           setnewusername("")
           setnewuserEmail("");
           setnewPass("");
-        }
+        
         async function registerUser () {
           console.log("Sending the data")
           const response = await fetch('http://localhost:5500/api/register',{
@@ -40,14 +45,17 @@ function SignUp() {
             headers: {
               'Content-Type': 'application/json'
             },body: JSON.stringify({
-              newusername,
-              newuserEmail,
-              newPass
+              newusername:newusername,
+              newuserEmail:newuserEmail,
+              newPass:newPass
             })
           })
           const data= await response.json()
           if(data.status == 'ok'){
             <Link to='/login' element={<Login />}/>
+          }
+          if(data.newEmail){
+            setValidate(true)
           }
         }
         registerUser()

@@ -14,7 +14,7 @@
 .row_poster{
     max-width: 1000px;
     max-height:250px;
-   
+    cursor: pointer;
     transition: transform 500ms;
     margin-right: 15px;
 }
@@ -23,7 +23,7 @@
     display: none;
 }
 .row_poster:hover{
-    transform: scale(1.18);
+    transform: scale(1.28);
 }
 .row_poster_large{
     max-height:250px;

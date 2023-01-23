@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
+.profile{
+    background-color: #000;
+    padding: 20px 40px;
+    margin: 20px auto;
+    width: 60vw;
+    height: 70vh;
+    place-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+.profile-img,.profile-img img{
+    height: 20vh;
+    width: 10vw;
+}
+.profile-title{
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+}
+.profile-block{
+    display: block;
+    padding: 0px 20px;
+}
+.profile-block h2{
+    color: white;
+    background: grey;
+    height: 5vh;
+    width: 40vw;
+    padding: 0 20px;
+}
+.profile-plans{
+    display: block;
+    color: white;
+}
+.profile-plans h1{
+    color: white;
+    font-size: 2.5em;
+}
+.profile-pay-flex{
+    display: flex;
+    justify-content: space-between;
+}
+.profile-pay-flex span{
+    color: white;
+    font-weight: bold;
+    margin-top: 1.5em;
+}
+.profile-pay-flex button{
+    color: white;
+    font-weight: bold;
+    background-color:red;
+    height: 5vh;
+    width : 10vw;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin-top: 2em;
+}
+.profile-flexins{
+    display: flex;
+    height:60vh;
+    margin: 4em 0;
+}
+.theprofile{
+    display: flex;
+    justify-content: space-between;
+}
+.btn-primary-sign-out{
+    height: 7vh;
+    width: 20vw;
+    background-color: red;
+    color: white;
+    margin: 10px 0;
+    border: none;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+}

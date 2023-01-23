@@ -19,7 +19,7 @@ function Banner() {
     }
     getBannerMovie();
   }, []);
-  console.table(onemovies);
+  // console.table(onemovies);
   const opts={
     height: "400",
     width:"100%",

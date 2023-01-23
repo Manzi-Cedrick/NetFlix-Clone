@@ -1,15 +1,27 @@
-import React, { useState } from "react";
-import { FaEye, FaFacebook } from "react-icons/fa";
+import React, { useState , useEffect } from "react";
+import { FaEye, FaFacebook ,FaEyeSlash } from "react-icons/fa";
 import "./login.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Home from "../HomePage";
 import SignUp from "./SignUp";
+import Update from "./Update";
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [validate, setValidate] = useState(false);
   const [showpass, setShowPass] = useState(false);
   const [check, setCheck] = useState(false);
+  useEffect(() => {
+    if (
+      password.trim().length == 0 || email.trim().length == 0
+    ) {
+      setValidate(true);
+    }else{
+      setValidate(false);
+    }
+  },[password,email]);
+  const navigate = useNavigate()
   const getEmail = (event) => {
     setEmail(event.target.value);
 
@@ -20,11 +32,6 @@ const Login = () => {
   
   const handleForm = (event) => {
     event.preventDefault();
-    if (
-      password.trim().length == 0 || email.trim().length == 0
-    ) {
-      setValidate(true);
-    }
     if(password == 0 || email == 0){
       setValidate(true);
     } else {
@@ -45,11 +52,10 @@ const Login = () => {
       })
       const data= await response.json()
       if(data.retrieved_user){
-        localStorage.setItem('token',data.retrieved_user)
-        alert('Login SuccessFull')
-        window.location.href = '/home'
+        localStorage.setItem('token',data.retrieved_user);
+        navigate("/home")
       }else{
-        alert('check your password or Username')
+        setValidate(true)
       }
     }
     loginUser()
@@ -102,7 +108,7 @@ const Login = () => {
               min="4"
               max="12"
             />
-            <FaEye className="fa-eye" onClick={toogleShow} />
+            <i>{showpass ? (<FaEye className="fa-eye" onClick={toogleShow} />):(<FaEyeSlash className="fa-eye" onClick={toogleShow} />)}</i>
           </div>
           <small style={{ color: validate && "red" }}>
             {validate && errorMessage2}
@@ -119,7 +125,7 @@ const Login = () => {
             </button>
           ) : (
             <button
-              className={`button-sign-in ${validate && " invalid"}`}
+              className={` ${validate && " invalid"} button-sign-in`}
               type="submit"
               disabled={validate}
             >
@@ -134,7 +140,7 @@ const Login = () => {
             <input type="checkbox" onChange={handlecheck} />
             Remember Me
           </label>
-          <a href="#">Forgot Password?</a>
+          <NavLink to='/update' element={<Update />}>Forgot Password?</NavLink>
         </div>
         <div className="facebook-register">
           <FaFacebook className="facebook-icon" />{" "}
